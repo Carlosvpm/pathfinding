@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { astar, calculateNeighbors } from "./Algorithms/astar";
-import { INode, Node } from "./Node";
+import { INode } from "@/interfaces";
+import { astar } from "../../algorithms/astar";
+import { Node } from "../node/node";
+import { calculateNeighbors } from "../../algorithms/calculate-neighbors";
 
-import "./Pathfinding.css";
+import "./pathfinding.css";
 
 export const Pathfinding = () => {
   const [nodes, setNodes] = useState<INode[][]>([]);
@@ -113,3 +115,4 @@ export const Pathfinding = () => {
     </div>
   );
 };
+

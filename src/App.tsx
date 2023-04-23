@@ -1,5 +1,5 @@
 import "./App.css";
-import { Pathfinding } from "./Pathfinding";
+import { Pathfinding } from "./components";
 
 function App() {
   return (

@@ -1,26 +1,7 @@
-import "./Node.css";
+import { INodeProps } from "@/interfaces";
+import "./node.css";
 
-export interface INode {
-  cost: number;
-  x: number;
-  y: number;
-  isStartNode: boolean;
-  isFinishNode: boolean;
-  isWallNode: boolean;
-  visited: boolean;
-  inOpenSet: boolean;
-  isStep: boolean;
-}
-
-interface IProps {
-  node: INode;
-  onPressNode?: (node: INode) => void;
-}
-
-
-
-
-export const Node = ({ node, onPressNode }: IProps) => {
+export const Node = ({ node, onPressNode }: INodeProps) => {
   const extraClassNode = node.isStartNode
     ? "start-node"
     : node.isFinishNode
