@@ -68,7 +68,6 @@ export const Pathfinding = () => {
     currentNode[key] =
       !(currentNode.isStartNode || currentNode.isFinishNode) &&
       !currentNode[key];
-    console.log(currentNode);
 
     setNodes(newNodes);
   };
@@ -89,7 +88,6 @@ export const Pathfinding = () => {
                   key={`${node.x},${node.y}`}
                   {...{ node }}
                   onPressNode={(n) => {
-                    console.log(n);
                     if (action === "setWallNode") {
                       setNode(n, "isWallNode", true);
                     } else {

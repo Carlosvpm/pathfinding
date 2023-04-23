@@ -18,7 +18,7 @@ const myLoop = (
 
     // Se openSet (Nós que irão ser visitados) estiver vazio quer dizer que os "vizinhos" são paredes/inválidos
     if (openSet.length === 0) {
-        return alert("Ladrões ganharam!!")
+        return alert("Hobbers Win!!")
     }
 
     // Organizar o array para que o vizinho com o menor custo seja visitado primeiro
@@ -30,7 +30,7 @@ const myLoop = (
     // Adicionar o primeiro vizinho a ser visitado no array de nós que ja foram visitados
     closeSet.push(current);
     current.visited = !current.isFinishNode;
-
+    
     // Verificar se a posição do nó atual não é a mesma dos nós de início e fim
     if (current.x === endNode.x && current.y === endNode.y) {
         const path = reconstructPath(cameFrom, current);
@@ -41,7 +41,7 @@ const myLoop = (
             }, 5 * index);
         });
 
-        return;
+        return alert("Coops Win!!");
     }
 
     // Procura os nós vizinhos
