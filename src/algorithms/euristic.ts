@@ -1,6 +1,7 @@
 import { INode } from "@/interfaces";
 
-
+// Calcula o custo de cada nó
+// Para saber qual nó é o melhor de ser visitado primeiro de acordo com o custo
 const euristic = (startNode: INode, endNode: INode, currentNode: INode) => {
     const xDistanceToEnd = endNode.x - currentNode.x;
     const yDistanceToEnd = endNode.y - currentNode.y;

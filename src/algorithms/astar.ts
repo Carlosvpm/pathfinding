@@ -8,8 +8,8 @@ const astar = (
   updateGrid: (e: INode[][]) => void,
   setNode: (node: INode, key: "isWallNode" | "isStep", value: any) => void
 ) => {
-  const openSet = [startNode];
-  const closeSet: INode[] = [];
+  const openSet = [startNode]; // Os nós que irá visitar
+  const closeSet: INode[] = []; // Os nós que já visitou
 
   const cameFrom = [{ current: startNode, previous: startNode }];
 
