@@ -23,8 +23,8 @@ export const Pathfinding = () => {
   };
   const endNode = {
     cost: 0,
-    x: 49,
-    y: 14,
+    x: 4,
+    y: 4,
     isStartNode: false,
     isFinishNode: true,
     isWallNode: false,
@@ -35,10 +35,10 @@ export const Pathfinding = () => {
 
   useEffect(() => {
     const newNodes: INode[][] = [];
-    for (let row = 0; row < 15; row++) {
+    for (let row = 0; row < 5; row++) {
       const newRow: INode[] = [];
 
-      for (let column = 0; column < 50; column++) {
+      for (let column = 0; column < 5; column++) {
         const newNode = {
           cost: 0,
           x: column,
@@ -64,14 +64,20 @@ export const Pathfinding = () => {
     const newNodes = [...nodes];
     const currentNode = newNodes[node.y][node.x];
     currentNode[key] =
-      !(currentNode.isStartNode || currentNode.isFinishNode) && value;
+      !(currentNode.isStartNode || currentNode.isFinishNode) &&
+      !currentNode[key];
+    console.log(currentNode);
 
     setNodes(newNodes);
   };
 
+  const init = () => {
+    astar(startNode, endNode, nodes, setNodes, setNode);
+  };
+
   return (
     <div>
-      Pathfinding
+      Desafio 4.0
       <table>
         <tbody>
           {nodes.map((row, i) => (
@@ -81,6 +87,7 @@ export const Pathfinding = () => {
                   key={`${node.x},${node.y}`}
                   {...{ node }}
                   onPressNode={(n) => {
+                    console.log(n);
                     if (action === "setWallNode") {
                       setNode(n, "isWallNode", true);
                     } else {
@@ -93,7 +100,7 @@ export const Pathfinding = () => {
           ))}
         </tbody>
       </table>
-      <button
+      {/* <button
         onClick={() =>
           action === "setWallNode"
             ? setAction("calcNeighbors")
@@ -101,12 +108,8 @@ export const Pathfinding = () => {
         }
       >
         Alterar
-      </button>
-      <button
-        onClick={() => astar(startNode, endNode, nodes, setNodes, setNode)}
-      >
-        Começar
-      </button>
+      </button> */}
+      <button onClick={() => init()}>Começar</button>
     </div>
   );
 };

@@ -17,15 +17,17 @@
 }
 
 .to-visit-node {
-  background-color: dodgerblue;
+  /* background-color: dodgerblue; */
+  background-color: white;
   transition: 0.5s;
 }
 
 .visited-node {
-  background-color: darkorange;
+  /* background-color: darkorange; */
+  background-color: white;
   transition: 0.5s;
 }
 
 .step-node {
-  background-color: blueviolet;
+  background-color: green;
 }

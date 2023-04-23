@@ -22,8 +22,6 @@ const astar = (
     updateGrid,
     setNode
   );
-
-  return "Não há caminho";
 };
 
 const myLoop = (
@@ -36,6 +34,10 @@ const myLoop = (
   updateGrid: (e: INode[][]) => void,
   setNode: (node: INode, key: "isWallNode" | "isStep", value: any) => void
 ) => {
+
+  if (openSet.length === 0) {
+    return alert("Ladrões ganharam!!")
+  }
   setTimeout(() => {
     openSet.sort((a, b) => {
       return a.cost - b.cost;
@@ -44,14 +46,13 @@ const myLoop = (
     let current = openSet.shift() as INode;
     closeSet.push(current);
     current.visited = !current.isFinishNode;
-
     if (current.x === endNode.x && current.y === endNode.y) {
       const path = reconstructPath(cameFrom, current);
 
       path.forEach((step, index) => {
         setTimeout(() => {
           setNode(grid[step.y][step.x], "isStep", true);
-        }, 50 * index);
+        }, 5 * index);
       });
 
       return;
@@ -86,6 +87,9 @@ const myLoop = (
       updateGrid,
       setNode
     );
+
+    return;
+
   }, 10);
 };
 
@@ -98,15 +102,15 @@ export const calculateNeighbors = (
 
   const neighbors = [];
 
-  if (x < 49) neighbors.push(grid[y][x + 1]);
+  if (x < 4) neighbors.push(grid[y][x + 1]);
   if (x > 0) neighbors.push(grid[y][x - 1]);
   if (y > 0) neighbors.push(grid[y - 1][x]);
-  if (y < 14) neighbors.push(grid[y + 1][x]);
+  if (y < 4) neighbors.push(grid[y + 1][x]);
 
-  if (y > 0 && x < 49) neighbors.push(grid[y - 1][x + 1]);
-  if (y < 14 && x < 49) neighbors.push(grid[y + 1][x + 1]);
-  if (y > 0 && x > 0) neighbors.push(grid[y - 1][x - 1]);
-  if (y < 14 && x > 0) neighbors.push(grid[y + 1][x - 1]);
+  // if (y > 0 && x < 4) neighbors.push(grid[y - 1][x + 1]);
+  // if (y < 4 && x < 4) neighbors.push(grid[y + 1][x + 1]);
+  // if (y > 0 && x > 0) neighbors.push(grid[y - 1][x - 1]);
+  // if (y < 4 && x > 0) neighbors.push(grid[y + 1][x - 1]);
 
   const newNodes = [...grid];
 
